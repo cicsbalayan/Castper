@@ -2,47 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { Monitor, Smartphone, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
-// Animation variants
-const pageVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const }
-  },
-};
-
-const buttonVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const }
-  },
-  hover: { 
-    scale: 1.02, 
-    y: -4,
-    transition: { duration: 0.2 }
-  },
-  tap: { scale: 0.98 },
-};
-
+import {
+  pageVariants,
+  staggerContainer,
+  fadeInUp,
+  buttonVariants,
+  defaultPageTransition,
+} from "@/lib/animation-variants";
 
 export function SelectionPage() {
   const navigate = useNavigate();
@@ -54,7 +20,7 @@ export function SelectionPage() {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      transition={{ duration: 0.4 }}
+      transition={defaultPageTransition}
     >
       <motion.div 
         className="w-full max-w-4xl space-y-10 text-center"
